@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1339424019 source:/home/xpetgru/Bonusprojekt/ClassStructure/filterBaseClass.cc
+	<cstring>
+	<cstdio>
+	"filterBaseClass.h"
+
+1339423901 /home/xpetgru/Bonusprojekt/ClassStructure/filterBaseClass.h
+	"typeDefs.h"
+
+1339423884 /home/xpetgru/Bonusprojekt/ClassStructure/typeDefs.h
+	<cstdio>
+	<vector>
+
+1339420576 source:/home/xpetgru/Bonusprojekt/ClassStructure/main.cc
+
+1339424038 source:/home/xpetgru/Bonusprojekt/ClassStructure/highPassFilter.cc
+	"highPassFilter.h"
+
+1339420309 /home/xpetgru/Bonusprojekt/ClassStructure/highPassFilter.h
+	"filterBaseClass.h"
+
