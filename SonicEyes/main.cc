@@ -9,7 +9,6 @@ mainClass::~mainClass{
     }
 
 void mainClass::setup(){
-  //ta bort denna rad
     }
 
 
