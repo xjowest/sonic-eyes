@@ -1,0 +1,10 @@
+class mainClass{
+
+ public:
+  mainClass();
+  ~mainClass();
+
+ private:
+  mainAlgorithm();
+
+};

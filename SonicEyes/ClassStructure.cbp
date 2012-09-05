@@ -31,6 +31,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="cameraInterface.cc" />
+		<Unit filename="cameraInterface.h" />
 		<Unit filename="filterBaseClass.cc" />
 		<Unit filename="filterBaseClass.h" />
 		<Unit filename="highPassFilter.cc" />

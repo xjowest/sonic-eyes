@@ -19,3 +19,21 @@
 1339420309 /home/xpetgru/Bonusprojekt/ClassStructure/highPassFilter.h
 	"filterBaseClass.h"
 
+1346254948 source:/home/johan/sonic-eyes/SonicEyes/filterBaseClass.cc
+	<cstring>
+	<cstdio>
+	"filterBaseClass.h"
+
+1346254948 /home/johan/sonic-eyes/SonicEyes/filterBaseClass.h
+	"typeDefs.h"
+
+1346254948 /home/johan/sonic-eyes/SonicEyes/typeDefs.h
+	<cstdio>
+	<vector>
+
+1346254948 source:/home/johan/sonic-eyes/SonicEyes/highPassFilter.cc
+	"highPassFilter.h"
+
+1346254948 /home/johan/sonic-eyes/SonicEyes/highPassFilter.h
+	"filterBaseClass.h"
+
