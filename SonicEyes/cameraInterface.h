@@ -6,9 +6,9 @@ class cameraInterface{
         cameraInterface();
         ~cameraInterface();
 
-        ImageArray getImage();
+        ImageArray * getImage();
     private:
-        void convertGrabbedDataToImageArray(& ImageArray imArray, unsigned char * pixelData);
+        void convertGrabbedDataToImageArray(ImageArray * imArray, unsigned char * pixelData);
 
         ofVideoGrabber vidGrabber;
         int 				camWidth;

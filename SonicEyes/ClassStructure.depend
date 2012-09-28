@@ -37,3 +37,21 @@
 1346254948 /home/johan/sonic-eyes/SonicEyes/highPassFilter.h
 	"filterBaseClass.h"
 
+1339425380 source:/home/petter/sonic-eyes/SonicEyes/filterBaseClass.cc
+	<cstring>
+	<cstdio>
+	"filterBaseClass.h"
+
+1339424404 /home/petter/sonic-eyes/SonicEyes/filterBaseClass.h
+	"typeDefs.h"
+
+1339423884 /home/petter/sonic-eyes/SonicEyes/typeDefs.h
+	<cstdio>
+	<vector>
+
+1339424444 source:/home/petter/sonic-eyes/SonicEyes/highPassFilter.cc
+	"highPassFilter.h"
+
+1339425108 /home/petter/sonic-eyes/SonicEyes/highPassFilter.h
+	"filterBaseClass.h"
+

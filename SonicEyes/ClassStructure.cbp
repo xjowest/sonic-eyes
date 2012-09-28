@@ -3,6 +3,8 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="ClassStructure" />
+		<Option makefile_is_custom="1" />
+		<Option execution_dir="../SonicEyes" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -38,10 +40,13 @@
 		<Unit filename="highPassFilter.cc" />
 		<Unit filename="highPassFilter.h" />
 		<Unit filename="main.cc" />
+		<Unit filename="starter.cc" />
 		<Unit filename="typeDefs.h" />
 		<Extensions>
 			<envvars />
-			<code_completion />
+			<code_completion>
+				<search_path add="../of_v0071_linux_release/libs/openFrameworksCompiled/lib/linux" />
+			</code_completion>
 			<lib_finder disable_auto="1" />
 			<debugger />
 		</Extensions>

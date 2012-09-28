@@ -1,10 +1,10 @@
 #include "main.h"
 
 mainClass::mainClass(){
-    camInterface = new camInterface();
+    camInterface = new cameraInterface();
     }
 
-mainClass::~mainClass{
+mainClass::~mainClass(){
     delete camInterface;
     }
 
