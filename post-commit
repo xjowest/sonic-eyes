@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# Configuration information
+
+GIT_USER="confidential:fdT0Cs_ckpVq3uXR5qWAiTrh9LidAjhwLj6OUs32CQA" 
+GIT_URL="http://app.yodiz.com/integration/git"
+
+# Gether necessary information
+
+commit_id=$(git rev-parse HEAD)
+commit_msg=$(git show -s --pretty=format:"%s" "$commit_id" | sed 's/ /*#*/g')
+echo MSG $commit_msg
+files_modified=$(git show --pretty="format:" --name-status "$commit_id" | tr -s '\t' '[|*]' | tr -s '\n' '[;*]' | tr -s '[:space:]' '[#*]')
+branch_name="refs/heads/"$(git branch --no-color | tr -s '*' ' ') # get branch name and replace '*' with whitespace
+branch_name=${branch_name/ /} # remove white space
+
+# Send update request to yodiz
+
+if [[ "$commit_msg" == *@* ]]; then
+	resp_code=$(curl -sL -w "%{http_code}" -H "Content-Type: application/json" -XPOST $GIT_URL -d '{"gitRequest":	[{"comments":"'$commit_msg'","comitter":"'$GIT_USER'","revision":"'$commit_id'","branch":"'$branch_name'","unformattedLog":"'$files_modified'"}]}')
+	if [ "$resp_code" = "200" ]; then
+		echo "*** Yodiz updated successfully ***" >&2
+	else
+		echo "*** $0 hook is unable to update yodiz. Error code is $resp_code ***" >&2
+	fi
+fi
+
+exit 0
