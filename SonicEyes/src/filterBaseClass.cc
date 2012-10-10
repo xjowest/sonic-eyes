@@ -37,18 +37,15 @@ Pixel filterBaseClass::filterCurrentPixel(ImageArray & image, int x, int y)
     {
         for (Index j = 0; j < this->kernel[0].size(); j++)
         {
-            if(this->kernel[i][j] != NULL)
+            if(x-offsetX+i >= 0 && x-offsetX+i < 640 &&
+               y-offsetY+j >= 0 && y-offsetY+j < 480)
             {
-                if(x-offsetX+i >= 0 && x-offsetX+i < 640 &&
-                   y-offsetY+j >= 0 && y-offsetY+j < 480)
-                {
-                    result += image[x-offsetX+i][y-offsetY+j] * this->kernel[i][j];
-                }
-                else
-                {
-                    result = image[x][y] * this->kernel[i][j];
-                }
+                result += image[x-offsetX+i][y-offsetY+j] * this->kernel[i][j];
             }
+            else
+            {
+                result = image[x][y] * this->kernel[i][j];
+            }            
         }
     }
 

@@ -1,6 +1,6 @@
-#include "cameraInterface.h"
+#include "highPassFilter.h"
 
-class mainClass : public ofBaseApp{
+class mainClass{
 
  public:
     mainClass();
@@ -11,5 +11,5 @@ class mainClass : public ofBaseApp{
 	void draw();
 
  private:
-    cameraInterface * camInterface;
+	highPassFilter hpFilter;
 };
