@@ -1,20 +1,22 @@
 #include "main.h"
 
 mainClass::mainClass(){
-    }
+    hpFilter = new highPassFilter();
+}
 
 mainClass::~mainClass(){
-    }
+}
 
 void mainClass::setup(){
-  //Blabla
-    }
+}
 
 
 void mainClass::update(){
-    }
+}
 
 
 void mainClass::draw(){
-    }
+}
 
+int main(){
+}

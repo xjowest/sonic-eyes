@@ -11,5 +11,5 @@ class mainClass{
 	void draw();
 
  private:
-	highPassFilter hpFilter;
+	highPassFilter * hpFilter;
 };
