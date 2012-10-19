@@ -4,6 +4,7 @@ mainClass::mainClass(){
     camInterface = new cameraInterface();
     scrnInterface = new screenInterface();
     spkrInterface = new speakerInterface();
+    snrInterface = new sonarInterface();
 
     setup();
 }
@@ -12,6 +13,7 @@ mainClass::~mainClass(){
     delete camInterface;
     delete scrnInterface;
     delete spkrInterface;
+    delete snrInterface;
 }
 
 void mainClass::setup(){

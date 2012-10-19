@@ -5,7 +5,8 @@ SRC = main.cc \
 	highPassFilter.cc \
 	cameraInterface.cc \
 	screenInterface.cc \
-	speakerInterface.cc
+	speakerInterface.cc \
+	sonarInterface.cc
 
 # Object files
 OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))

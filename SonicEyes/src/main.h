@@ -5,6 +5,7 @@
 #include "cameraInterface.h"
 #include "screenInterface.h"
 #include "speakerInterface.h"
+#include "sonarInterface.h"
 
 class mainClass{
 
@@ -20,6 +21,7 @@ private:
     cameraInterface * camInterface;
     screenInterface * scrnInterface;
     speakerInterface * spkrInterface;
+    sonarInterface * snrInterface;
 
     ImageArray hej; 
 };
