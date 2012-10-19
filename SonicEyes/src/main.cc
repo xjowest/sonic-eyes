@@ -1,10 +1,12 @@
 #include "main.h"
 
 mainClass::mainClass(){
-    hpFilter = new highPassFilter();
+    camInterface = new cameraInterface();
+    setup();
 }
 
 mainClass::~mainClass(){
+    delete camInterface;
 }
 
 void mainClass::setup(){
@@ -19,4 +21,7 @@ void mainClass::draw(){
 }
 
 int main(){
+    mainClass * main = new mainClass();
+    delete main;
+    return 0;
 }
