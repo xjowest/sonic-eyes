@@ -5,6 +5,7 @@ mainClass::mainClass(){
     scrnInterface = new screenInterface();
     spkrInterface = new speakerInterface();
     snrInterface = new sonarInterface();
+    clstrAlgo = new clusterAlgorithm();
 
     setup();
 }
@@ -14,6 +15,7 @@ mainClass::~mainClass(){
     delete scrnInterface;
     delete spkrInterface;
     delete snrInterface;
+    delete clstrAlgo;
 }
 
 void mainClass::setup(){
