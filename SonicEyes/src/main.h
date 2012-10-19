@@ -7,6 +7,7 @@
 #include "speakerInterface.h"
 #include "sonarInterface.h"
 #include "clusterAlgorithm.h"
+#include "analysisAlgorithm.h"
 
 class mainClass{
 
@@ -23,7 +24,8 @@ private:
     screenInterface * scrnInterface;
     speakerInterface * spkrInterface;
     sonarInterface * snrInterface;
-    clusterAlgorithm * clstrAlgo;
+    clusterAlgorithm * clusterAlgo;
+    analysisAlgorithm * analysisAlgo;
 
     ImageArray hej; 
 };

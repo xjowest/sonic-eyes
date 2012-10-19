@@ -7,7 +7,8 @@ SRC = main.cc \
 	screenInterface.cc \
 	speakerInterface.cc \
 	sonarInterface.cc \
-	clusterAlgorithm.cc
+	clusterAlgorithm.cc \
+	analysisAlgorithm.cc
 
 # Object files
 OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))
