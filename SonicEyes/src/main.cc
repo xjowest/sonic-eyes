@@ -3,6 +3,7 @@
 mainClass::mainClass(){
     camInterface = new cameraInterface();
     scrnInterface = new screenInterface();
+    spkrInterface = new speakerInterface();
 
     setup();
 }
@@ -10,6 +11,7 @@ mainClass::mainClass(){
 mainClass::~mainClass(){
     delete camInterface;
     delete scrnInterface;
+    delete spkrInterface;
 }
 
 void mainClass::setup(){

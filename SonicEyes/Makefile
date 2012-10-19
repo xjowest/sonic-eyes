@@ -4,7 +4,8 @@ SRC = main.cc \
 	filterBaseClass.cc \
 	highPassFilter.cc \
 	cameraInterface.cc \
-	screenInterface.cc
+	screenInterface.cc \
+	speakerInterface.cc
 
 # Object files
 OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))
@@ -13,7 +14,7 @@ OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))
 CC = g++
 
 # Compiler flags
-CFLAGS = -c -Wall
+CFLAGS = -c -g -Wall
 
 # Main target
 SONIC = SonicEyes
@@ -33,4 +34,4 @@ obj/%.o : %.cc
 
 # Clean target
 clean:
-	rm -f bin/SonicEyes $(OBJECTS)
+	rm -f bin/SonicEyes $(OBJECTS) src/*~
