@@ -3,6 +3,7 @@
 
 #include "typeDefs.h"
 #include "cameraInterface.h"
+#include "screenInterface.h"
 
 class mainClass{
 
@@ -16,6 +17,8 @@ public:
 
 private:
     cameraInterface * camInterface;
+    screenInterface * scrnInterface;
+
     ImageArray hej; 
 };
 

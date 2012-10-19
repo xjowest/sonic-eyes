@@ -1,0 +1,10 @@
+#include "screenInterface.h"
+
+screenInterface::cameraInterface() {
+}
+
+screenInterface::~cameraInterface(){
+}
+
+void screenInterface::render(ImageArray image){
+}

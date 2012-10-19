@@ -2,7 +2,9 @@
 vpath %cc src
 SRC = main.cc \
 	filterBaseClass.cc \
-	highPassFilter.cc
+	highPassFilter.cc \
+	cameraInterface.cc \
+	screenInterface.cc
 
 # Object files
 OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))

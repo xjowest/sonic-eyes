@@ -2,11 +2,14 @@
 
 mainClass::mainClass(){
     camInterface = new cameraInterface();
+    scrnInterface = new screenInterface();
+
     setup();
 }
 
 mainClass::~mainClass(){
     delete camInterface;
+    delete scrnInterface;
 }
 
 void mainClass::setup(){
