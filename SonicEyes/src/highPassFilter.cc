@@ -18,7 +18,6 @@ highPassFilter::highPassFilter()
 
 highPassFilter::~highPassFilter()
 {
-
 }
 
 

@@ -8,7 +8,7 @@ public:
     clusterAlgorithm();
     ~clusterAlgorithm();
 
-    void detectClusters();
+    ClusterData detectClusters(DepthData inData);
     
 private:
 };

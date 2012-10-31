@@ -8,7 +8,7 @@ public:
     cameraInterface();
     ~cameraInterface();
 
-    void getCurrentImage(ImageArray);
+    void getCurrentImage(ImageArray image);
     
 private:
     ImageArray currentImage;
