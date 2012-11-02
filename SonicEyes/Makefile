@@ -17,7 +17,11 @@ OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))
 CC = g++
 
 # Compiler flags
-CFLAGS = -c -g -Wall
+CFLAGS = -c -g $(SDL_CFLAGS) $(SDL_LDFLAGS) -Wall
+
+# SDL compiler flags
+SDL_CFLAGS := $(shell sdl-config --cflags) 
+SDL_LDFLAGS := $(shell sdl-config --libs) 
 
 # Main target
 SONIC = SonicEyes
@@ -28,7 +32,7 @@ all : $(SONIC)
 
 $(SONIC) : $(OBJECTS)
 	@echo Linking...
-	$(CC) -o bin/$(SONIC) $(OBJECTS)
+	$(CC) $(SDL_CFLAGS) $(SDL_LDFLAGS) -o bin/$(SONIC) $(OBJECTS)
 
 # Linking rules
 obj/%.o : %.cc

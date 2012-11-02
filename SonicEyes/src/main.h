@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include "SDL/SDL.h"
+
 #include "typeDefs.h"
 #include "cameraInterface.h"
 #include "screenInterface.h"
@@ -15,9 +17,10 @@ public:
     mainClass();
     ~mainClass();
 
-    void setup();
+    bool setup();
     void update();
     void draw();
+    bool shutDown();
 
 private:
     cameraInterface * camInterface;
