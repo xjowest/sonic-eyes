@@ -17,9 +17,10 @@ OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))
 CC = g++
 
 # Compiler flags
-CFLAGS = -c -g $(SDL_CFLAGS) $(SDL_LDFLAGS) -Wall
+CFLAGS = -c -g $(SDL_CFLAGS) -Wall
 
 # SDL compiler flags
+SDL_FLAGS = $(SDL_CFLAGS) $(SDL_LDFLAGS)
 SDL_CFLAGS := $(shell sdl-config --cflags) 
 SDL_LDFLAGS := $(shell sdl-config --libs) 
 
@@ -32,7 +33,7 @@ all : $(SONIC)
 
 $(SONIC) : $(OBJECTS)
 	@echo Linking...
-	$(CC) $(SDL_CFLAGS) $(SDL_LDFLAGS) -o bin/$(SONIC) $(OBJECTS)
+	$(CC) $(SDL_FLAGS) -o bin/$(SONIC) $(OBJECTS)
 
 # Linking rules
 obj/%.o : %.cc
