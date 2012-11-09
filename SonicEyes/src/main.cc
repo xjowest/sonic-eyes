@@ -21,6 +21,18 @@ bool mainClass::setup(){
     return true;
 }
 
+bool mainClass::mainLoop() {
+	SDL_Event event;
+	
+	while(true) {
+		while(SDL_PollEvent(&event)) {
+			if (event.type == SDL_QUIT) {
+				return true;
+			}	
+		}
+		draw();
+	}
+}
 
 void mainClass::update(){
 }
@@ -28,6 +40,11 @@ void mainClass::update(){
 
 void mainClass::draw(){
     ImageArray temp;
+	for(int i = 0; i < IMAGE_WIDTH; i++) {
+		for(int j = 0; j < IMAGE_HEIGHT; j++) {
+			temp.values[i][j] = rand() % 254;
+		}		
+	}
     scrnInterface->render(temp);
 }
 
@@ -50,7 +67,9 @@ int main(int argc, char* args[]){
 	return -1;
     }
 
-    main->draw();
+    if(!main->mainLoop()) {
+		return -1;
+	}
 
     if(!main->shutDown()) {
 	printf("error during shut down!\n");

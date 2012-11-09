@@ -18,6 +18,7 @@ public:
     ~mainClass();
 
     bool setup();
+	bool mainLoop();
     void update();
     void draw();
     bool shutDown();

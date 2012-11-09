@@ -10,11 +10,10 @@ public:
     screenInterface();
     ~screenInterface();
 
-    void render(ImageArray);
+    void render(ImageArray imageToRender);
     
 private:
     SDL_Surface * screenSurface;
-    SDL_Surface * renderedImage;
 };
 
 #endif
