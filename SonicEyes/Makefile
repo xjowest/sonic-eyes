@@ -33,12 +33,12 @@ all : $(SONIC)
 
 $(SONIC) : $(OBJECTS)
 	@echo Linking...
-	$(CC) $(SDL_FLAGS) -o bin/$(SONIC) $(OBJECTS)
+	$(CC) -o bin/$(SONIC) $(OBJECTS) $(SDL_FLAGS)
 
 # Linking rules
 obj/%.o : %.cc
 	@echo $<
-	$(CC) $(CFLAGS) -c $< -o obj/$(patsubst src/%.cc,%.o,$<)
+	$(CC) -c $< -o obj/$(patsubst src/%.cc,%.o,$<) $(CFLAGS)
 
 # Clean target
 clean:
