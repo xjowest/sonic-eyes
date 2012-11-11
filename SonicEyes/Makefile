@@ -17,10 +17,10 @@ OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))
 CC = g++
 
 # Compiler flags
-CFLAGS = -c -g $(SDL_CFLAGS) -Wall
+CFLAGS = -c -g -Wall $(SDL_CFLAGS)
 
 # SDL compiler flags
-SDL_FLAGS = $(SDL_CFLAGS) $(SDL_LDFLAGS)
+SDL_FLAGS = $(SDL_LDFLAGS) $(SDL_CFLAGS)
 SDL_CFLAGS := $(shell sdl-config --cflags) 
 SDL_LDFLAGS := $(shell sdl-config --libs) 
 
