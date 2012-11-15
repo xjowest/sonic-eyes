@@ -17,9 +17,14 @@ using namespace std;
 #define IMAGE_WIDTH 640
 #define IMAGE_HEIGHT 480
 #define IMAGE_SIZE 640 * 480
+#define SAMPLE_FREQUENCY 20000
+#define LOWEST_FREQUENCY 1000
+#define HIGHEST_FREQUENCY 10000
 
 // Typedefs
 typedef unsigned char Pixel;
+
+typedef char Sample;
 
 typedef unsigned char Index;
 
@@ -28,7 +33,7 @@ typedef unsigned char DepthValue;
 typedef vector< vector<float> > Kernel;
 
 // Structs
-struct ImageArray{
+struct ImageArray {
     public:	
     Pixel values[IMAGE_WIDTH][IMAGE_HEIGHT];
     
@@ -41,7 +46,18 @@ struct ImageArray{
     }  
 };
 
-struct DepthData{
+struct SoundData {
+    public:	
+    Sample values[SAMPLE_FREQUENCY / LOWEST_FREQUENCY];
+    
+    void operator=(const SoundData &I ){
+	for(int i = 0; i < SAMPLE_FREQUENCY / LOWEST_FREQUENCY; i++){
+	    values[i] = I.values[i];	    
+	}
+    }  	
+};
+
+struct DepthData {
     public:
     DepthValue values[IMAGE_WIDTH];
     
@@ -52,7 +68,7 @@ struct DepthData{
     }
 };
 
-struct Cluster{
+struct Cluster {
     public:
     Cluster(){
 	startIndex = 0;
@@ -72,7 +88,7 @@ struct Cluster{
 };
 
 
-struct ClusterData{
+struct ClusterData {
     vector< Cluster > clusters;    
 };
 

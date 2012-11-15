@@ -3,8 +3,8 @@
 speakerInterface::speakerInterface() {
 }
 
-speakerInterface::~speakerInterface(){
+speakerInterface::~speakerInterface() {
 }
 
-void speakerInterface::playSound(){
+void speakerInterface::playSound(SoundData soundToBePlayed){
 }

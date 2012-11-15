@@ -8,7 +8,7 @@ public:
     speakerInterface();
     ~speakerInterface();
 
-    void playSound();
+    void playSound(SoundData soundToBePlayed);
     
 private:
 };
