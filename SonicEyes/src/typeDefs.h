@@ -31,6 +31,8 @@ typedef unsigned char Index;
 
 typedef unsigned char DepthValue;
 
+typedef unsigned short U16;
+
 typedef vector< vector<float> > Kernel;
 
 // Structs
