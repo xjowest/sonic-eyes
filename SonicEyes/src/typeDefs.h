@@ -17,6 +17,7 @@ using namespace std;
 #define IMAGE_WIDTH 640
 #define IMAGE_HEIGHT 480
 #define IMAGE_SIZE 640 * 480
+#define IMAGE_PITCH 3                   // Bytes per pixel
 
 // Typedefs
 typedef unsigned char Pixel;

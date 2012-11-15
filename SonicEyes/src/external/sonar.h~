@@ -6,6 +6,6 @@ typedef unsigned char U8;
 typedef unsigned short U16;
 typedef unsigned int U32;
 
-typedef U8 * Image;
+typedef U8 * DepthValue;
 
-void GetPixelData(Image img, char* fileName, U16 size);
+void GetSonarData(DepthValue, char* fileName, U8 size);
