@@ -1,5 +1,9 @@
 # Source files
-vpath %cc src
+
+vpath %.c external 
+
+vpath %.cc src
+
 SRC = main.cc \
 	filterBaseClass.cc \
 	highPassFilter.cc \
@@ -10,14 +14,20 @@ SRC = main.cc \
 	clusterAlgorithm.cc \
 	analysisAlgorithm.cc
 
-# Object files
-OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC))
+EXT = camera.c \
+	sonar.c
 
-# Compiler
+# Object files
+OBJECTS = $(patsubst %.cc,obj/%.o,$(SRC)) $(EXTERNAL)
+EXTERNAL = $(patsubst %.c,externalObj/%.o,$(EXT))
+
+# Compilers
 CC = g++
+C = gcc
 
 # Compiler flags
 CFLAGS = -c -g -Wall $(SDL_CFLAGS)
+EXTFLAGS = -c -g -Wall
 
 # SDL compiler flags
 SDL_FLAGS = $(SDL_LDFLAGS) $(SDL_CFLAGS)
@@ -27,19 +37,23 @@ SDL_LDFLAGS := $(shell sdl-config --libs)
 # Main target
 SONIC = SonicEyes
 
-# Build rules
+# Linking rules
 all : $(SONIC)
 	@echo Finished compiling and linking SonicEyes
 
 $(SONIC) : $(OBJECTS)
-	@echo Linking...
+	@echo Linking SonicEyes...
 	$(CC) -o bin/$(SONIC) $(OBJECTS) $(SDL_FLAGS)
 
-# Linking rules
+# Build rules
 obj/%.o : %.cc
 	@echo $<
-	$(CC) -c $< -o obj/$(patsubst src/%.cc,%.o,$<) $(CFLAGS)
+	$(CC) $< -c -o obj/$(patsubst src/%.cc,%.o,$<) $(CFLAGS)
+
+externalObj/%.o : %.c
+	@echo $<
+	$(C) $< -c -o externalObj/$(patsubst external/%.c,%.o,$<) $(EXTFLAGS)
 
 # Clean target
 clean:
-	rm -f bin/SonicEyes $(OBJECTS) src/*~
+	rm -f bin/SonicEyes $(OBJECTS) src/*~ external/*~ ./*~

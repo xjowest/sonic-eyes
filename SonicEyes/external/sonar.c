@@ -1,6 +1,6 @@
 #include "sonar.h"
 
-void GetSonarData(DepthValue, char* fileName, U8 size)
+void GetSonarData(DepthValue depth, char* fileName, U8 size)
 {
   
 }
