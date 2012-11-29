@@ -8,9 +8,10 @@ public:
     sonarInterface();
     ~sonarInterface();
 
-    void getDepthData();
+    void getDepthData(DepthData depth);
     
 private:
+    DepthData currentDepth;
 };
 
 #endif

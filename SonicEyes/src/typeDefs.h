@@ -13,7 +13,7 @@ using namespace std;
 #define MIN_DEPTH 0			// Closest to the camera in meters
 #define MAX_DEPTH 5			// Farthest away from the camera in meters
 #define MAX_CLUSTER_DEPTH_DEVIATION 0.3 // For the cluster algorithm
-#define SONAR_WIDTH 7200                // Width of sonar data (X)
+#define SONAR_WIDTH 400                 // Width of sonar data (X)
 #define IMAGE_WIDTH 640
 #define IMAGE_HEIGHT 480
 #define IMAGE_SIZE 640 * 480
@@ -62,10 +62,10 @@ struct SoundData {
 
 struct DepthData {
     public:
-    DepthValue values[IMAGE_WIDTH];
+    DepthValue values[SONAR_WIDTH];
     
     void operator=(const DepthData &I ){
-		for(int i = 0; i < IMAGE_WIDTH; i++){		
+		for(int i = 0; i < SONAR_WIDTH; i++){		
 		    values[i] = I.values[i];
 		}		
     }

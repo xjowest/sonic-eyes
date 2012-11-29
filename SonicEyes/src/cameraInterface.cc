@@ -1,6 +1,6 @@
 #include "cameraInterface.h"
 
-//extern "C" int GetPixelData(Pixel * img, char * fileName, U16 size);
+extern "C" void GetPixelData(Pixel * img, char * fileName, U16 size);
 
 cameraInterface::cameraInterface(){
 }
@@ -9,7 +9,7 @@ cameraInterface::~cameraInterface(){
 }
 
 void cameraInterface::getCurrentImage(ImageArray image){
-    /*   
+       
     Pixel pixelData[IMAGE_SIZE * IMAGE_PITCH];
     Pixel bwPixelData[IMAGE_SIZE];
     char fileName[] = "../resources/currentImg.raw";
@@ -30,6 +30,6 @@ void cameraInterface::getCurrentImage(ImageArray image){
 	    currentImage.values[x][y] = bwPixelData[x + y * IMAGE_WIDTH];
 	}
     }
-    */
+    
     image = currentImage;
 }
