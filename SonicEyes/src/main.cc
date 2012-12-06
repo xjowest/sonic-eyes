@@ -39,13 +39,19 @@ void mainClass::update(){
 
 
 void mainClass::draw(){
-    ImageArray temp;
+    
+    ImageArray tempImage;
 	for(int i = 0; i < IMAGE_WIDTH; i++) {
 		for(int j = 0; j < IMAGE_HEIGHT; j++) {
-			temp.values[i][j] = rand() % 254;
+			tempImage.values[i][j] = rand() % 254;
 		}		
 	}
-    scrnInterface->render(temp);
+	scrnInterface->render(tempImage);
+    
+    int duration = 100000;
+    double Hz = 240;
+    spkrInterface->playSound(Hz, duration);
+    spkrInterface->wait();
 }
 
 bool mainClass::shutDown(){    

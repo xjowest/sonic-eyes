@@ -5,6 +5,7 @@
 #include <vector>
 #include <cstring>
 #include <cstdlib>
+#include "SDL/SDL.h"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ using namespace std;
 // Typedefs
 typedef unsigned char Pixel;
 
-typedef char Sample;
+typedef Uint8 Sample;
 
 typedef unsigned char Index;
 
@@ -52,6 +53,8 @@ struct ImageArray {
 struct SoundData {
     public:	
     Sample values[SAMPLE_FREQUENCY / LOWEST_FREQUENCY];
+
+    int duration;
     
     void operator=(const SoundData &I ){
 	for(int i = 0; i < SAMPLE_FREQUENCY / LOWEST_FREQUENCY; i++){
