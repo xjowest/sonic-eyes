@@ -10,7 +10,6 @@ bool mainClass::setup(){
     if(SDL_Init(SDL_INIT_EVERYTHING) == -1){
 	return false;
     }
-    
     camInterface = new cameraInterface();
     scrnInterface = new screenInterface();
     spkrInterface = new speakerInterface();
@@ -41,17 +40,13 @@ void mainClass::update(){
 void mainClass::draw(){
     
     ImageArray tempImage;
-	for(int i = 0; i < IMAGE_WIDTH; i++) {
-		for(int j = 0; j < IMAGE_HEIGHT; j++) {
-			tempImage.values[i][j] = rand() % 254;
-		}		
-	}
-	scrnInterface->render(tempImage);
+    //camInterface->getCurrentImage(tempImage);
+    scrnInterface->render(tempImage);
     
     int duration = 100000;
     double Hz = 240;
-    spkrInterface->playSound(Hz, duration);
-    spkrInterface->wait();
+    //spkrInterface->playSound(Hz, duration);
+    //spkrInterface->wait();
 }
 
 bool mainClass::shutDown(){    

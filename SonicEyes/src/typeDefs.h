@@ -32,6 +32,8 @@ typedef unsigned char Index;
 
 typedef unsigned char DepthValue;
 
+typedef unsigned char U8;
+
 typedef unsigned short U16;
 
 typedef vector< vector<float> > Kernel;
@@ -40,7 +42,7 @@ typedef vector< vector<float> > Kernel;
 struct ImageArray {
     public:	
     Pixel values[IMAGE_WIDTH][IMAGE_HEIGHT];
-    
+  
     void operator=(const ImageArray &I ){
 	for(int i = 0; i < IMAGE_WIDTH; i++){
 	    for(int j = 0; j < IMAGE_HEIGHT; j++){
