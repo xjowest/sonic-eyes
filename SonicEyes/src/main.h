@@ -10,6 +10,7 @@
 #include "sonarInterface.h"
 #include "clusterAlgorithm.h"
 #include "analysisAlgorithm.h"
+#include "soundCreator.h"
 
 class mainClass{
 
@@ -20,7 +21,8 @@ public:
     bool setup();
 	bool mainLoop();
     void update();
-    void draw();
+    void drawImageOnScreen();
+    void playSoundInSpeakers();
     bool shutDown();
 
 private:
@@ -30,6 +32,7 @@ private:
     sonarInterface * snrInterface;
     clusterAlgorithm * clusterAlgo;
     analysisAlgorithm * analysisAlgo;
+    soundCreator * sndCreator;
 
     ImageArray hej; 
 };

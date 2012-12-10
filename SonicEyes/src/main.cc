@@ -1,12 +1,12 @@
 #include "main.h"
 
-mainClass::mainClass(){
+mainClass::mainClass() {
 }
 
-mainClass::~mainClass(){
+mainClass::~mainClass() {
 }
 
-bool mainClass::setup(){
+bool mainClass::setup() {
     if(SDL_Init(SDL_INIT_EVERYTHING) == -1){
 	return false;
     }
@@ -17,6 +17,7 @@ bool mainClass::setup(){
     snrInterface = new sonarInterface();
     clusterAlgo = new clusterAlgorithm();
     analysisAlgo = new analysisAlgorithm();
+    sndCreator = new soundCreator();
 
     return true;
 }
@@ -30,15 +31,16 @@ bool mainClass::mainLoop() {
 				return true;
 			}	
 		}
-		draw();
+		drawImageOnScreen();
+		playSoundInSpeakers();
 	}
 }
 
-void mainClass::update(){
+void mainClass::update() {
 }
 
 
-void mainClass::draw(){
+void mainClass::drawImageOnScreen() {
     
     ImageArray tempImage;
 	for(int i = 0; i < IMAGE_WIDTH; i++) {
@@ -47,11 +49,15 @@ void mainClass::draw(){
 		}		
 	}
 	scrnInterface->render(tempImage);
+}
+
+void mainClass::playSoundInSpeakers() {
+    SampleBurst * sampleBurst = new SampleBurst();
     
-    int duration = 100000;
-    double Hz = 240;
-    spkrInterface->playSound(Hz, duration);
-    spkrInterface->wait();
+    sndCreator->createSound(sampleBurst);
+    spkrInterface->playSound(sampleBurst);
+    
+    delete sampleBurst;
 }
 
 bool mainClass::shutDown(){    
@@ -66,7 +72,7 @@ bool mainClass::shutDown(){
     return true;
 }
 
-int main(int argc, char* args[]){
+int main(int argc, char* args[]) {
     mainClass * main = new mainClass();    
     if(!main->setup()) {
 	printf("error during setup!\n");

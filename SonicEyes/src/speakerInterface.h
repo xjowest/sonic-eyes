@@ -4,33 +4,23 @@
 #include "typeDefs.h"
 #include "SDL/SDL.h"
 #include <SDL/SDL_audio.h>
-#include <queue>
-#include <cmath>
-
-struct SoundObject
-{
-    double freq;
-    int samplesLeft;
-};
 
 class speakerInterface{
 public:
     speakerInterface();
     ~speakerInterface();
     
-    void playSound(double freq, int duration);    
-    void generateSamples(Sint16 *stream, int length);
+    void playSound(SampleBurst * sampleBurst);    
+    void refillSoundBuffer(Sint16 * stream);
     void wait();
     
 private:
     SDL_AudioSpec * desiredAudioSpec;
     SDL_AudioSpec * obtainedAudioSpec;
-    std::queue<SoundObject> sounds;
-    double v;
-
+    SampleBurst * sampleBuffer;
 };
 
-void audioCallback(void * userData, Uint8 * stream, int len);
+void audioCallback(void * _userData, Uint8 * _stream, int _length);
 
 
 #endif

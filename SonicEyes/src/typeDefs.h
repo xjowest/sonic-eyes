@@ -19,14 +19,13 @@ using namespace std;
 #define IMAGE_HEIGHT 480
 #define IMAGE_SIZE 640 * 480
 #define IMAGE_PITCH 3                   // Bytes per pixel
-#define SAMPLE_FREQUENCY 20000
-#define LOWEST_FREQUENCY 1000
-#define HIGHEST_FREQUENCY 10000
+#define SAMPLE_FREQUENCY 8000
+#define NUMBER_OF_SOUND_SAMPLES 2000
 
 // Typedefs
 typedef unsigned char Pixel;
 
-typedef Uint8 Sample;
+typedef Sint16 Sample;
 
 typedef unsigned char Index;
 
@@ -35,6 +34,8 @@ typedef unsigned char DepthValue;
 typedef unsigned short U16;
 
 typedef vector< vector<float> > Kernel;
+
+typedef int DepthValues[NUMBER_OF_SOUND_SAMPLES];
 
 // Structs
 struct ImageArray {
@@ -48,19 +49,6 @@ struct ImageArray {
 	    }
 	}
     }  
-};
-
-struct SoundData {
-    public:	
-    Sample values[SAMPLE_FREQUENCY / LOWEST_FREQUENCY];
-
-    int duration;
-    
-    void operator=(const SoundData &I ){
-	for(int i = 0; i < SAMPLE_FREQUENCY / LOWEST_FREQUENCY; i++){
-	    values[i] = I.values[i];	    
-	}
-    }  	
 };
 
 struct DepthData {
@@ -96,6 +84,22 @@ struct Cluster {
 
 struct ClusterData {
     vector< Cluster > clusters;    
+};
+
+struct AnalyzedData {
+    DepthValues depthValues;    
+};
+
+struct SampleBurst {
+    Sample * burst;
+    
+    SampleBurst() {
+	burst = (Sample *) malloc(sizeof(Sample) * NUMBER_OF_SOUND_SAMPLES);
+	memset(burst, 1, sizeof(Sample) * NUMBER_OF_SOUND_SAMPLES);
+    }
+    ~SampleBurst() {
+	free(burst);
+    }
 };
 
 #endif
