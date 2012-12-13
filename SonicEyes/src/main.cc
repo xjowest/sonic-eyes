@@ -16,7 +16,7 @@ bool mainClass::setup() {
     snrInterface = new sonarInterface();
     clusterAlgo = new clusterAlgorithm();
     analysisAlgo = new analysisAlgorithm();
-    //sndCreator = new soundCreator();
+    sndCreator = new soundCreator();
 
     return true;
 }
@@ -58,8 +58,8 @@ void mainClass::drawImageOnScreen() {
 void mainClass::playSoundInSpeakers() {
     SampleBurst * sampleBurst = new SampleBurst();
     
-    //sndCreator->createSound(sampleBurst);
-    //spkrInterface->playSound(sampleBurst);
+    sndCreator->createSound(sampleBurst);
+    spkrInterface->playSound(sampleBurst);
     
     delete sampleBurst;
 }
