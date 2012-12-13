@@ -12,7 +12,8 @@ SRC = main.cc \
 	speakerInterface.cc \
 	sonarInterface.cc \
 	clusterAlgorithm.cc \
-	analysisAlgorithm.cc
+	analysisAlgorithm.cc \
+	soundCreator.cc
 
 EXT = camera.c \
 	sonar.c

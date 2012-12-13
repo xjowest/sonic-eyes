@@ -58,8 +58,8 @@ void mainClass::drawImageOnScreen() {
 void mainClass::playSoundInSpeakers() {
     SampleBurst * sampleBurst = new SampleBurst();
     
-    //sndCreator->createSound(sampleBurst);
-    //spkrInterface->playSound(sampleBurst);
+    sndCreator->createSound(sampleBurst);
+    spkrInterface->playSound(sampleBurst);
     
     delete sampleBurst;
 }
