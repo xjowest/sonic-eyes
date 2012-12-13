@@ -16,7 +16,7 @@ bool mainClass::setup() {
     snrInterface = new sonarInterface();
     clusterAlgo = new clusterAlgorithm();
     analysisAlgo = new analysisAlgorithm();
-    sndCreator = new soundCreator();
+    //sndCreator = new soundCreator();
 
     return true;
 }
@@ -42,19 +42,24 @@ void mainClass::update() {
 void mainClass::drawImageOnScreen() {
     
     ImageArray tempImage;
+
+    camInterface->getCurrentImage(&tempImage);
+    /*
     for(int i = 0; i < IMAGE_WIDTH; i++) {
 	for(int j = 0; j < IMAGE_HEIGHT; j++) {
 	    tempImage.values[i][j] = rand() % 254;
 	}		
     }
+    */
     scrnInterface->render(tempImage);
+    
 }
 
 void mainClass::playSoundInSpeakers() {
     SampleBurst * sampleBurst = new SampleBurst();
     
-    sndCreator->createSound(sampleBurst);
-    spkrInterface->playSound(sampleBurst);
+    //sndCreator->createSound(sampleBurst);
+    //spkrInterface->playSound(sampleBurst);
     
     delete sampleBurst;
 }
