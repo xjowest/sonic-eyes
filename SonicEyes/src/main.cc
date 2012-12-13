@@ -16,7 +16,7 @@ bool mainClass::setup() {
     snrInterface = new sonarInterface();
     clusterAlgo = new clusterAlgorithm();
     analysisAlgo = new analysisAlgorithm();
-    //sndCreator = new soundCreator();
+    sndCreator = new soundCreator();
 
     return true;
 }
