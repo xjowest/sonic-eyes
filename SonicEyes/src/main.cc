@@ -31,7 +31,7 @@ bool mainClass::mainLoop() {
 			}	
 		}
 		drawImageOnScreen();
-		playSoundInSpeakers();
+		//playSoundInSpeakers();
 	}
 }
 
@@ -44,13 +44,7 @@ void mainClass::drawImageOnScreen() {
     ImageArray tempImage;
 
     camInterface->getCurrentImage(&tempImage);
-    /*
-    for(int i = 0; i < IMAGE_WIDTH; i++) {
-	for(int j = 0; j < IMAGE_HEIGHT; j++) {
-	    tempImage.values[i][j] = rand() % 254;
-	}		
-    }
-    */
+    analysisAlgo->analyzeData(tempImage);
     scrnInterface->render(tempImage);
     
 }
