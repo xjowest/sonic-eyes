@@ -6,14 +6,14 @@
 class filterBaseClass{
 public:
     filterBaseClass();
-    ~filterBaseClass();
-    
-private:
+    ~filterBaseClass();    
     void applyFilter(ImageArray & image);
+
+private:    
     Pixel filterCurrentPixel(ImageArray & image, int x, int y);
     
-protected:
-    Kernel kernel;
+protected:    
+    vector< vector<float> > kernel;
     unsigned char offsetX;
     unsigned char offsetY;
 };

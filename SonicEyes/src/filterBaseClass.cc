@@ -1,7 +1,6 @@
 #include "filterBaseClass.h"
 
 filterBaseClass::filterBaseClass() {
-    
 }
 
 filterBaseClass::~filterBaseClass() {
@@ -16,7 +15,7 @@ void filterBaseClass::applyFilter(ImageArray & image) {
         }
     }
 
-    result = image;
+    image = result;
 }
 
 Pixel filterBaseClass::filterCurrentPixel(ImageArray & image, int x, int y) {

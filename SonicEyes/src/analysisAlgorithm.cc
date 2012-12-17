@@ -10,8 +10,8 @@ analysisAlgorithm::~analysisAlgorithm() {
 
 void analysisAlgorithm::analyzeData(ImageArray & image) {
     hpFilter->applyFilter(image);
-    applyThreshHoldFilter(image);
-    applyDilationFilter(image);
+    //applyThreshHoldFilter(image);
+    //applyDilationFilter(image);
 }
 
 void analysisAlgorithm::applyThreshHoldFilter(ImageArray & image) {
