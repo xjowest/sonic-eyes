@@ -8,11 +8,10 @@ public:
     clusterAlgorithm();
     ~clusterAlgorithm();
 
-    ClusterData detectClusters(DepthData inDepthData);
+    ClusterData detectClusters(DepthData & inDepthData);
     
-    void clampDepthValues(DepthData inDepthData, DepthData tempDepthData);
-    void assignClusters(DepthData tempDepthData, ClusterData outClusterData);
-    void calculateClusterDepths(ClusterData outClusterData, DepthData inDepthData);
+    void assignClusters(DepthData & tempDepthData, ClusterData & outClusterData);
+    void calculateClusterDepths(ClusterData & outClusterData, DepthData & inDepthData);
     
 private:
 };

@@ -2,7 +2,6 @@
 #define SOUND_CREATOR_H
 
 #include "typeDefs.h"
-#include <queue>
 #include <cmath>
 
 class soundCreator{

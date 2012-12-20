@@ -40,11 +40,13 @@ void mainClass::update() {
 
 
 void mainClass::drawImageOnScreen() {
-    
     ImageArray tempImage;
     ImageArray originalImage;
     EdgePositions positions;
+    ClusterData clusterData;
+    DepthData depthData;
     memset(&positions, false, sizeof(EdgePositions));
+    memset(&depthData.values, 0, sizeof(depthData.values));
 
     camInterface->getCurrentImage(&tempImage);
     originalImage = tempImage;    
@@ -56,6 +58,9 @@ void mainClass::drawImageOnScreen() {
 	    }
 	}
     }
+
+    snrInterface->getDepthData(&depthData);
+    clusterData = clusterAlgo->detectClusters(depthData);
     scrnInterface->render(tempImage);
     
 }

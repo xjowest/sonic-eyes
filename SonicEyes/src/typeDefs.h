@@ -10,9 +10,9 @@
 using namespace std;
 
 // Definitions
-#define DEPTH_LEVELS 100		// The depth resolution
-#define MIN_DEPTH 0			// Closest to the camera in meters
-#define MAX_DEPTH 5			// Farthest away from the camera in meters
+#define DEPTH_LEVELS 100.0		// The depth resolution
+#define MIN_DEPTH 0.0			// Closest to the camera in meters
+#define MAX_DEPTH 5.0			// Farthest away from the camera in meters
 #define MAX_CLUSTER_DEPTH_DEVIATION 0.3 // For the cluster algorithm
 #define SONAR_WIDTH 400                 // Width of sonar data (X)
 #define IMAGE_WIDTH 640
@@ -34,7 +34,7 @@ typedef unsigned char U8;
 
 typedef unsigned short U16;
 
-typedef U8 DepthValue;
+typedef float DepthValue;
 
 typedef vector< vector<float> > Kernel;
 
