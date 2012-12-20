@@ -7,6 +7,10 @@ vpath %.cc src
 SRC = main.cc \
 	filterBaseClass.cc \
 	highPassFilter.cc \
+	lowPassFilter.cc \
+	directionFilter.cc \
+	erosionFilter.cc \
+	dilationFilter.cc \
 	cameraInterface.cc \
 	screenInterface.cc \
 	speakerInterface.cc \

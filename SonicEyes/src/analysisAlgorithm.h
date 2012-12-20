@@ -3,6 +3,10 @@
 
 #include "typeDefs.h"
 #include "highPassFilter.h"
+#include "lowPassFilter.h"
+#include "directionFilter.h"
+#include "erosionFilter.h"
+#include "dilationFilter.h"
 
 class analysisAlgorithm{
 public:
@@ -13,11 +17,13 @@ public:
     
 private:
     void applyThreshHoldFilter(ImageArray & image);
-    void applyErosionFilter(ImageArray & image);
-    void applyDilationFilter(ImageArray & image);
-    Pixel returnExtremeValue(ImageArray & image, int x, int y, float plusOrMinus);
 
     highPassFilter * hpFilter;
+    lowPassFilter * lpFilter;
+    directionFilter * dirFilter;
+    erosionFilter * eroFilter;
+    dilationFilter * dilFilter;
+
 };
 
 #endif
