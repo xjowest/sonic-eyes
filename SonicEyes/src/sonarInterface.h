@@ -8,7 +8,7 @@ public:
     sonarInterface();
     ~sonarInterface();
 
-    void getDepthData(DepthData depth);
+    void getDepthData(DepthData * depth);
     
 private:
     DepthData currentDepth;
