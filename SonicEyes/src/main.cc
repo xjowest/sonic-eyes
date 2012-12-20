@@ -7,7 +7,7 @@ mainClass::~mainClass() {
 }
 
 bool mainClass::setup() {
-    if(SDL_Init(SDL_INIT_EVERYTHING) == -1){
+    if(SDL_Init(SDL_INIT_EVERYTHING) == -1) {
 	return false;
     }
     camInterface = new cameraInterface();
