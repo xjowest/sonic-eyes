@@ -34,7 +34,6 @@ private:
     analysisAlgorithm * analysisAlgo;
     soundCreator * sndCreator;
 
-    ImageArray hej; 
 };
 
 #endif

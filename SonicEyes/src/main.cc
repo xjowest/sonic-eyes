@@ -42,9 +42,20 @@ void mainClass::update() {
 void mainClass::drawImageOnScreen() {
     
     ImageArray tempImage;
+    ImageArray originalImage;
+    EdgePositions positions;
+    memset(&positions, false, sizeof(EdgePositions));
 
     camInterface->getCurrentImage(&tempImage);
-    analysisAlgo->analyzeData(tempImage);
+    originalImage = tempImage;    
+    analysisAlgo->analyzeData(tempImage, positions);
+    for(int i = 0; i < IMAGE_WIDTH; i++) {
+	for(int j = 0; j < IMAGE_HEIGHT; j++) {
+	    if(tempImage.values[i][j] < originalImage.values[i][j]){		
+		tempImage.values[i][j] = originalImage.values[i][j];
+	    }
+	}
+    }
     scrnInterface->render(tempImage);
     
 }

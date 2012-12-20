@@ -13,10 +13,12 @@ public:
     analysisAlgorithm();
     ~analysisAlgorithm();
 
-    void analyzeData(ImageArray & image);
+    void analyzeData(ImageArray & image, EdgePositions & positions);
     
 private:
     void applyThreshHoldFilter(ImageArray & image);
+    void detectEdges(ImageArray & image, EdgePositions & positions);
+    void drawEdges(ImageArray & image, EdgePositions & positions);
 
     highPassFilter * hpFilter;
     lowPassFilter * lpFilter;
