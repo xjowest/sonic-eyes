@@ -17,6 +17,7 @@ using namespace std;
 #define SONAR_WIDTH 400                 // Width of sonar data (X)
 #define IMAGE_WIDTH 640
 #define IMAGE_HEIGHT 480
+#define MIDDLE_OF_IMAGE IMAGE_HEIGHT/2
 #define IMAGE_SIZE 640 * 480
 #define IMAGE_PITCH 3                   // Bytes per pixel
 #define SAMPLE_FREQUENCY 8000
@@ -38,6 +39,8 @@ typedef U8 DepthValue;
 typedef vector< vector<float> > Kernel;
 
 typedef int DepthValues[NUMBER_OF_SOUND_SAMPLES];
+
+typedef bool EdgePositions[IMAGE_WIDTH];
 
 // Structs
 struct ImageArray {

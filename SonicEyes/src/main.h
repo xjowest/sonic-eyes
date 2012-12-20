@@ -33,8 +33,6 @@ private:
     clusterAlgorithm * clusterAlgo;
     analysisAlgorithm * analysisAlgo;
     soundCreator * sndCreator;
-
-    ImageArray hej; 
 };
 
 #endif
