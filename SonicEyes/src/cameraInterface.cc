@@ -25,8 +25,8 @@ void cameraInterface::getCurrentImage(ImageArray * image){
     
     // Copy pixel data into 2D-array 
     for(y=0;y<IMAGE_HEIGHT;y++){
-	for(x=0;x<IMAGE_WIDTH;x++){
-	    image->values[x][y] = bwPixelData[x + y * IMAGE_WIDTH];
-	}
+		for(x=0;x<IMAGE_WIDTH;x++){
+	    	image->values[x][y] = bwPixelData[x + y * IMAGE_WIDTH];
+		}
     }
 }

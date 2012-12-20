@@ -29,11 +29,11 @@ typedef Sint16 Sample;
 
 typedef unsigned char Index;
 
-typedef unsigned char DepthValue;
-
 typedef unsigned char U8;
 
 typedef unsigned short U16;
+
+typedef U8 DepthValue;
 
 typedef vector< vector<float> > Kernel;
 

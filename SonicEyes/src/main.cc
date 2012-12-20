@@ -23,7 +23,7 @@ bool mainClass::setup() {
 
 bool mainClass::mainLoop() {
 	SDL_Event event;
-	
+
 	while(true) {
 		while(SDL_PollEvent(&event)) {
 			if (event.type == SDL_QUIT) {
