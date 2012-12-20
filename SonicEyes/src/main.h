@@ -21,8 +21,8 @@ public:
     bool setup();
 	bool mainLoop();
     void update();
-    void drawImageOnScreen();
-    void playSoundInSpeakers();
+    void drawImageOnScreen(ClusterData & cluster);
+    void playSoundInSpeakers(ClusterData & cluster);
     bool shutDown();
 
 private:
@@ -33,6 +33,7 @@ private:
     clusterAlgorithm * clusterAlgo;
     analysisAlgorithm * analysisAlgo;
     soundCreator * sndCreator;
+
 };
 
 #endif

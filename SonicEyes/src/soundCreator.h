@@ -9,7 +9,7 @@ public:
     soundCreator();
     ~soundCreator();
     
-    void createSound(SampleBurst * sampleBurst);
+    void createSound(SampleBurst * sampleBurst, ClusterData & cluster);
     
 private:
 };

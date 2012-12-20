@@ -23,15 +23,15 @@ bool mainClass::setup() {
 
 bool mainClass::mainLoop() {
 	SDL_Event event;
-
+	ClusterData clusterData;
 	while(true) {
 		while(SDL_PollEvent(&event)) {
 			if (event.type == SDL_QUIT) {
 				return true;
 			}	
 		}
-		drawImageOnScreen();
-		//playSoundInSpeakers();
+		drawImageOnScreen(clusterData);
+		playSoundInSpeakers(clusterData);
 	}
 }
 
@@ -39,11 +39,10 @@ void mainClass::update() {
 }
 
 
-void mainClass::drawImageOnScreen() {
+void mainClass::drawImageOnScreen(ClusterData & cluster) {
     ImageArray tempImage;
     ImageArray originalImage;
     EdgePositions positions;
-    ClusterData clusterData;
     DepthData depthData;
     memset(&positions, false, sizeof(EdgePositions));
     memset(&depthData.values, 0, sizeof(depthData.values));
@@ -60,15 +59,15 @@ void mainClass::drawImageOnScreen() {
     }
 
     snrInterface->getDepthData(&depthData);
-    clusterData = clusterAlgo->detectClusters(depthData);
+    cluster = clusterAlgo->detectClusters(depthData);
     scrnInterface->render(tempImage);
     
 }
 
-void mainClass::playSoundInSpeakers() {
+void mainClass::playSoundInSpeakers(ClusterData & cluster) {
     SampleBurst * sampleBurst = new SampleBurst();
-    
-    sndCreator->createSound(sampleBurst);
+    //memset (sampleBurst->burst, 0, sizeof(sampleBurst->burst));
+    sndCreator->createSound(sampleBurst, cluster);
     spkrInterface->playSound(sampleBurst);
     
     delete sampleBurst;
