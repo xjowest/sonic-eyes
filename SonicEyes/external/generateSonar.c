@@ -7,7 +7,8 @@ int main(void)
 {
 	FILE * fd = NULL;
 	int i = SONAR_WIDTH - 1;
-	int j, k = 0;
+	int j = 0;
+	int k = 0;
 	double angle = 37.0;
 	double dAngle = 0.25;
 	double angDepth[SONAR_WIDTH];
@@ -48,17 +49,17 @@ int main(void)
 	angle -= dAngle;
 	
 	for(i=0;i<k;i++){
-		eukDepth[i] = (DepthValue)(angDepth[i] * sin((180-angle) * 2 * PI / 360) * 100 / 5);
-		angle -=dAngle;
+	    eukDepth[i] = (DepthValue)(angDepth[i] * sin((180-angle) * 2 * PI / 360));
+	    angle -=dAngle;
 	}
 	
 	for(i=k;i<SONAR_WIDTH;i++){
-		eukDepth[i] = (DepthValue)(angDepth[i] * sin(angle * 2 * PI / 360) * 100 / 5);
-		angle -=dAngle;
-	}	
-	
+	    eukDepth[i] = (DepthValue)(angDepth[i] * sin(angle * 2 * PI / 360));
+	    angle -=dAngle;
+	}
+
 	fd = fopen("../resources/currentDepth.txt", "w");
-	fwrite(eukDepth, sizeof(DepthValue), sizeof(eukDepth), fd);
+	fwrite((float*)eukDepth, sizeof(DepthValue), sizeof(eukDepth), fd);
 	fclose(fd);
 	
 	return 0;

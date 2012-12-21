@@ -24,10 +24,10 @@ void soundCreator::createSound(SampleBurst * sampleBurst, ClusterData & cluster)
     }
 
     for(int t = 0; t < NUMBER_OF_SOUND_SAMPLES; t++) {
-	printf("Burst value %i\n", sampleBurst->burst[t]);
-	printf("Highest value %i\n", highestAmplitude);
+	//printf("Burst value %i\n", sampleBurst->burst[t]);
+	//printf("Highest value %i\n", highestAmplitude);
 	sampleBurst->burst[t] = (int)((float)sampleBurst->burst[t] / (float)highestAmplitude * 28000);
-	printf("Burst normalized %i\n", sampleBurst->burst[t]);
+	//printf("Burst normalized %i\n", sampleBurst->burst[t]);
     }
 //    float desiredAmplitude = 28000.0 - (cluster.clusters[i].depth * 18000 / 5.0);
 //    sampleBurst->burst[t] = sampleBurst->burst[t] * desiredAmplitude;

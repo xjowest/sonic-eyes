@@ -7,5 +7,5 @@
 
 typedef unsigned char U8;
 typedef unsigned short U16;
-typedef U8 DepthValue;
+typedef float DepthValue;
 typedef U8 Image;
