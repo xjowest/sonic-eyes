@@ -7,7 +7,7 @@ speakerInterface::speakerInterface() {
     // Set the audio format 
     desiredAudioSpec->freq = SAMPLE_FREQUENCY;
     desiredAudioSpec->format = AUDIO_S16SYS;
-    desiredAudioSpec->channels = 2;    // 1 = mono, 2 = stereo 
+    desiredAudioSpec->channels = 1;    // 1 = mono, 2 = stereo 
     desiredAudioSpec->samples = NUMBER_OF_SOUND_SAMPLES;  // Good low-latency value for callback 
     desiredAudioSpec->callback = audioCallback;
     desiredAudioSpec->userdata = this;

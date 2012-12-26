@@ -18,3 +18,10 @@ void soundCreator::createSound(SampleBurst * sampleBurst, ClusterData & cluster)
     	}
 	}
 }
+
+void soundCreator::createSweepSound(SampleBurst * sampleBurst, ClusterData & cluster){
+	for(int i = 0; i < NUMBER_OF_SOUND_SAMPLES; i++){
+		sampleBurst->burst[i] = (4000 - (cluster.clusters[(int)(i * (cluster.clusters.size() - 1) / NUMBER_OF_SOUND_SAMPLES)].depth * 2000)) * sin(2 * M_PI * 500 * i / SAMPLE_FREQUENCY);
+	}
+	
+}

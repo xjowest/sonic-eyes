@@ -20,8 +20,8 @@ using namespace std;
 #define MIDDLE_OF_IMAGE IMAGE_HEIGHT/2
 #define IMAGE_SIZE 640 * 480
 #define IMAGE_PITCH 3                   // Bytes per pixel
-#define SAMPLE_FREQUENCY 22050
-#define NUMBER_OF_SOUND_SAMPLES 4096
+#define SAMPLE_FREQUENCY 1024
+#define NUMBER_OF_SOUND_SAMPLES 2048
 
 // Typedefs
 typedef unsigned char Pixel;

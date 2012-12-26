@@ -53,6 +53,6 @@ void clusterAlgorithm::calculateClusterDepths(ClusterData & outClusterData, Dept
 	else {
 	    outClusterData.clusters[i].depth = tempDepth;
 	}
-	printf("tempDepth[%i]: %f\n", i,tempDepth);
+	
     }
 }

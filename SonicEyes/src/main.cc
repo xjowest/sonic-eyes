@@ -1,6 +1,8 @@
 #include "main.h"
 
+static bool makeSweetMusic;
 mainClass::mainClass() {
+	makeSweetMusic = true;
 }
 
 mainClass::~mainClass() {
@@ -31,7 +33,10 @@ bool mainClass::mainLoop() {
 			}	
 		}
 		drawImageOnScreen(clusterData);
-		playSoundInSpeakers(clusterData);
+		if(makeSweetMusic){
+			playSoundInSpeakers(clusterData);
+			makeSweetMusic = false;
+		}
 	}
 }
 
@@ -67,7 +72,8 @@ void mainClass::drawImageOnScreen(ClusterData & cluster) {
 void mainClass::playSoundInSpeakers(ClusterData & cluster) {
     SampleBurst * sampleBurst = new SampleBurst();
     //memset (sampleBurst->burst, 0, sizeof(sampleBurst->burst));
-    sndCreator->createSound(sampleBurst, cluster);
+    //sndCreator->createSound(sampleBurst, cluster);
+	sndCreator->createSweepSound(sampleBurst, cluster);
     spkrInterface->playSound(sampleBurst);
     
     delete sampleBurst;

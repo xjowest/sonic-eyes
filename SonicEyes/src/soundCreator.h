@@ -10,6 +10,7 @@ public:
     ~soundCreator();
     
     void createSound(SampleBurst * sampleBurst, ClusterData & cluster);
+	void createSweepSound(SampleBurst * sampleBurst, ClusterData & cluster);
     
 private:
 };
