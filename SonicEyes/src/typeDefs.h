@@ -20,8 +20,8 @@ using namespace std;
 #define MIDDLE_OF_IMAGE IMAGE_HEIGHT/2
 #define IMAGE_SIZE 640 * 480
 #define IMAGE_PITCH 3                   // Bytes per pixel
-#define SAMPLE_FREQUENCY 5000
-#define NUMBER_OF_SOUND_SAMPLES 5000
+#define SAMPLE_FREQUENCY 22050
+#define NUMBER_OF_SOUND_SAMPLES 4096
 
 // Typedefs
 typedef unsigned char Pixel;
@@ -100,7 +100,7 @@ struct SampleBurst {
     
     SampleBurst() {
 	burst = (Sample *) malloc(sizeof(Sample) * NUMBER_OF_SOUND_SAMPLES);
-	memset(burst, 1, sizeof(Sample) * NUMBER_OF_SOUND_SAMPLES);
+	memset(burst, 0, sizeof(Sample) * NUMBER_OF_SOUND_SAMPLES);
     }
     ~SampleBurst() {
 	free(burst);
