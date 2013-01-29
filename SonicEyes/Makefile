@@ -48,7 +48,7 @@ all : $(SONIC)
 
 $(SONIC) : $(OBJECTS)
 	@echo Linking SonicEyes...
-	$(CC) -o bin/$(SONIC) $(OBJECTS) $(SDL_FLAGS)
+	$(CC) -o bin/$(SONIC) $(OBJECTS) $(SDL_FLAGS) -framework OpenAL
 
 # Build rules
 obj/%.o : %.cc

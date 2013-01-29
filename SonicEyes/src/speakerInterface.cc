@@ -1,48 +1,46 @@
 #include "speakerInterface.h"
 
-speakerInterface::speakerInterface() {
-    desiredAudioSpec = new SDL_AudioSpec();
-    obtainedAudioSpec = new SDL_AudioSpec();
-    
-    // Set the audio format 
-    desiredAudioSpec->freq = SAMPLE_FREQUENCY;
-    desiredAudioSpec->format = AUDIO_S16SYS;
-    desiredAudioSpec->channels = 1;    // 1 = mono, 2 = stereo 
-    desiredAudioSpec->samples = NUMBER_OF_SOUND_SAMPLES;  // Good low-latency value for callback 
-    desiredAudioSpec->callback = audioCallback;
-    desiredAudioSpec->userdata = this;
+speakerInterface::speakerInterface() 
+	: m_bufSize(0)
+	, m_dev(NULL)
+	, m_ctx(NULL)
+	, m_src(0)
+{
+	// Init device
+	const char *defname = alcGetString(NULL, ALC_DEFAULT_DEVICE_SPECIFIER);
+	m_dev = alcOpenDevice(defname);
+	m_ctx = alcCreateContext(m_dev, NULL);
+	alcMakeContextCurrent(m_ctx);
 
-    // Open the audio device, forcing the desired format 
-    if ( SDL_OpenAudio(desiredAudioSpec, obtainedAudioSpec) != 0 ) {
-        fprintf(stderr, "Couldn't open audio: %s\n", SDL_GetError());
-	exit(0);
-    }
-
-    delete desiredAudioSpec;
-
+	// Generate sound buffer
+	
+	alGenBuffers(1, &m_buf);
+	m_bufSize = NUMBER_OF_SECONDS * SAMPLE_FREQUENCY;
     sampleBuffer = new SampleBurst();
-
-    // start play audio    
-    SDL_PauseAudio(0);
 }
 
 speakerInterface::~speakerInterface() {
-    SDL_CloseAudio();
-    delete obtainedAudioSpec;
+	alcMakeContextCurrent(NULL);
+	alcDestroyContext(m_ctx);
+	alcCloseDevice(m_dev);
+	alSourceStop(m_src);
+	alDeleteSources(1, &m_src);
     delete sampleBuffer;
 }
 
 void speakerInterface::playSound(SampleBurst * sampleBurst) {
-    SDL_LockAudio();
-    memset(sampleBuffer->burst, 0, sizeof(Sample) * NUMBER_OF_SOUND_SAMPLES);
-    memcpy(sampleBuffer->burst, sampleBurst->burst, sizeof(Sample) * NUMBER_OF_SOUND_SAMPLES);
-    SDL_UnlockAudio();    
+    alBufferData(m_buf, AL_FORMAT_MONO16, sampleBurst->burst, m_bufSize * sizeof(short), SAMPLE_FREQUENCY);
+ 
+    /* Set-up sound source and play buffer */
+    alGenSources(1, &m_src);
+    alSourcei(m_src, AL_BUFFER, m_buf);
+
+	alSourcef(m_src, AL_SEC_OFFSET, 0.0f);
+	alSourcePlay(m_src);
 }
 
 void speakerInterface::wait() {
-    SDL_Delay(100);
-    SDL_LockAudio();
-    SDL_UnlockAudio();
+
 }
 
 void speakerInterface::refillSoundBuffer(Sint16 * stream) {
