@@ -7,17 +7,44 @@ soundCreator::~soundCreator() {
 }
 
 void soundCreator::createSound(SampleBurst * sampleBurst, ClusterData & cluster) {
-    for(int i = 0; i < (int)cluster.clusters.size(); i++) {
+    int buf_size = NUMBER_OF_SECONDS * SAMPLE_FREQUENCY;
+	double A = 0;
+	double freqStart = 0.f;
+	double freqEnd = 0.f;
+	double * tmpBuf = (double*)malloc(buf_size * sizeof(double));
+	memset(tmpBuf, 0, buf_size * sizeof(double));
+	double maxSample = 0;
+	
+	for(int i = 0; i < cluster.clusters.size(); i++){
 		if(cluster.clusters[i].endIndex - cluster.clusters[i].startIndex > 20){
-			int frequency = cluster.clusters[i].startIndex * 10 + 500;
-			for(int t=0;t<NUMBER_OF_SOUND_SAMPLES;t++){
-				sampleBurst->burst[t] += (4000 - (cluster.clusters[i].depth * 2000 / 5) / cluster.clusters.size()) * sin(2 * M_PI * frequency * t / SAMPLE_FREQUENCY);
+			A = 30000.0 * (1.0-(cluster.clusters[i].depth / MAX_DEPTH));
+					
+			freqStart = cluster.clusters[i].startIndex * 5 + 500;
+			freqEnd = cluster.clusters[i].endIndex * 5 + 500;
+			
+			for(int t = 0; t < buf_size; t++){
+				tmpBuf[t] += A*sin(2.0 * M_PI * freqEnd * t / SAMPLE_FREQUENCY);
+				tmpBuf[t] += A*sin(2.0 * M_PI * freqStart * t / SAMPLE_FREQUENCY);
 			}
 			
-			printf("Playing frequencies: %i\n", frequency);
-    	}
+			printf("Amplitude %f at frequency %f and %f\n", A, freqStart, freqEnd);
+			
+		}
+		for(int t = 0; t < buf_size; t++){
+			if(tmpBuf[t] > maxSample)
+				maxSample = tmpBuf[t];
+		}
+		
+		
 	}
+	
+	for(int t = 0; t < buf_size; t++){
+		sampleBurst->burst[t] = 30000 * tmpBuf[t] / maxSample;
+	}
+	
+	free(tmpBuf);
 }
+
 
 void soundCreator::createSweepSound(SampleBurst * sampleBurst, ClusterData & cluster){
 	int nCluster = 0;
@@ -34,8 +61,10 @@ void soundCreator::createSweepSound(SampleBurst * sampleBurst, ClusterData & clu
 			
 		if(cluster.clusters[i].depth < min)
 			min = cluster.clusters[i].depth;
+			
+		printf("Cluster[%i]: %i\n", i, cluster.clusters[i].depth);
 	}
-		
+	printf("Max: %u, Min: %u:\n", max, min);	
 		
 	A = 30000.0 * (1.0-((cluster.clusters[nCluster].depth - min) / (max - min)));
 		

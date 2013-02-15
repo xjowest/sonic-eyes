@@ -71,9 +71,8 @@ void mainClass::drawImageOnScreen(ClusterData & cluster) {
 
 void mainClass::playSoundInSpeakers(ClusterData & cluster) {
     SampleBurst * sampleBurst = new SampleBurst();
-    //memset (sampleBurst->burst, 0, sizeof(sampleBurst->burst));
-    //sndCreator->createSound(sampleBurst, cluster);
-	sndCreator->createSweepSound(sampleBurst, cluster);
+    sndCreator->createSound(sampleBurst, cluster);
+	//sndCreator->createSweepSound(sampleBurst, cluster);
     spkrInterface->playSound(sampleBurst);
     
     delete sampleBurst;
