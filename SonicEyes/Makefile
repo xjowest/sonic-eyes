@@ -34,6 +34,12 @@ C = gcc
 CFLAGS = -c -g -Wall $(SDL_CFLAGS)
 EXTFLAGS = -c -g -Wall
 
+# OS specific flags
+OSFLAGS = -lopenal
+ifeq "$(OSTYPE)" "darwin"
+OSFLAGS = -framework OpenAL
+endif
+
 # SDL compiler flags
 SDL_FLAGS = $(SDL_LDFLAGS) $(SDL_CFLAGS)
 SDL_CFLAGS := $(shell sdl-config --cflags) 
@@ -46,9 +52,10 @@ SONIC = SonicEyes
 all : $(SONIC)
 	@echo Finished compiling and linking SonicEyes
 
+
 $(SONIC) : $(OBJECTS)
 	@echo Linking SonicEyes...
-	$(CC) -o bin/$(SONIC) $(OBJECTS) $(SDL_FLAGS) -framework OpenAL
+	$(CC) -o bin/$(SONIC) $(OBJECTS) $(SDL_FLAGS) $(OSFLAGS)
 
 # Build rules
 obj/%.o : %.cc
